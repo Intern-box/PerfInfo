@@ -222,12 +222,13 @@
             this.DirSizeText.Multiline = true;
             this.DirSizeText.Name = "DirSizeText";
             this.DirSizeText.ReadOnly = true;
-            this.DirSizeText.Size = new System.Drawing.Size(367, 92);
+            this.DirSizeText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DirSizeText.Size = new System.Drawing.Size(367, 126);
             this.DirSizeText.TabIndex = 25;
             // 
             // PingText
             // 
-            this.PingText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PingText.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PingText.ForeColor = System.Drawing.Color.Black;
             this.PingText.Location = new System.Drawing.Point(153, 217);
             this.PingText.Multiline = true;
@@ -236,7 +237,8 @@
             this.PingText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PingText.Size = new System.Drawing.Size(635, 190);
             this.PingText.TabIndex = 26;
-            this.PingText.Text = "После нажатия на кнопку, ждите...";
+            this.PingText.Text = "Температура процессора работает только с правами Администратора!\r\nПосле нажатия н" +
+    "а кнопку, ждите...";
             // 
             // Update
             // 
@@ -280,7 +282,7 @@
             this.MinimizeBox = false;
             this.Name = "ViewForm";
             this.ShowIcon = false;
-            this.Text = "PerfInfo 0.1";
+            this.Text = "PerfInfo 0.2";
             this.ResumeLayout(false);
             this.PerformLayout();
 
