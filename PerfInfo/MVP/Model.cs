@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Management;
+using System.Windows.Forms;
 using ConfFileSpace;
 
 namespace ModelSpace
@@ -110,6 +111,16 @@ namespace ModelSpace
             return tmp;
         }
 
-        public long MDLPSize() { return new FileInfo(confFile.MDLP).Length / 1048576; }
+        public long MDLPSize()
+        {
+            try { return new FileInfo(confFile.MDLP).Length / 1048576; }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Путь к MDLP.mdf неверный.", "Первая строка файла настройки!");
+
+                throw;
+            }
+        }
     }
 }

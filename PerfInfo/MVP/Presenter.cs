@@ -2,6 +2,7 @@
 using ModelSpace;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Windows.Forms;
 
 namespace PresenterSpace
 {
@@ -29,11 +30,32 @@ namespace PresenterSpace
 
             int countESD = 0; int countAdm = 0; int countTJ = 0;
 
-            foreach (string file in Directory.EnumerateFiles(model.ESD, "*.*", SearchOption.AllDirectories)) { countESD++; }
+            try { foreach (string file in Directory.EnumerateFiles(model.ESD, "*.*", SearchOption.AllDirectories)) { countESD++; } }
 
-            foreach (string file in Directory.EnumerateFiles(model.AdmTemp, "*.*", SearchOption.AllDirectories)) { countAdm++; }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Путь к ESD неверный.", "Вторая строка файла настройки!");
 
-            foreach (string file in Directory.EnumerateFiles(model.TJ, "*.*", SearchOption.AllDirectories)) { countTJ++; }
+                throw;
+            }
+
+            try { foreach (string file in Directory.EnumerateFiles(model.AdmTemp, "*.*", SearchOption.AllDirectories)) { countAdm++; } }
+
+            catch (System.Exception)
+            {
+                MessageBox.Show("Путь к adm\\AppData\\Local\\Temp неверный.", "Третья строка файла настройки!");
+
+                throw;
+            }
+
+            try { foreach (string file in Directory.EnumerateFiles(model.TJ, "*.*", SearchOption.AllDirectories)) { countTJ++; } }
+
+            catch (System.Exception)
+            {
+                MessageBox.Show("Путь к TJ неверный.", "Четвёртая строка файла настройки!");
+
+                throw;
+            }
 
             viewForm.DirSizeText.Text =
                 
@@ -46,13 +68,22 @@ namespace PresenterSpace
 
         public void Ping()
         {
-            viewForm.PingText.Text = $"Пингую {model.FirstIP}...\r\n";
+            try
+            {
+                viewForm.PingText.Text = $"Пингую {model.FirstIP}...\r\n";
 
-            for (int i = 0; i < 4; i++) { viewForm.PingText.Text += new Ping().Send(model.FirstIP).Status.ToString() + "\r\n"; }
+                for (int i = 0; i < 4; i++) { viewForm.PingText.Text += new Ping().Send(model.FirstIP).Status.ToString() + "\r\n"; }
 
-            viewForm.PingText.Text += $"\r\nПингую {model.SecondIP}...\r\n";
+                viewForm.PingText.Text += $"\r\nПингую {model.SecondIP}...\r\n";
 
-            for (int i = 0; i < 4; i++) { viewForm.PingText.Text += new Ping().Send(model.SecondIP).Status.ToString() + "\r\n"; }
+                for (int i = 0; i < 4; i++) { viewForm.PingText.Text += new Ping().Send(model.SecondIP).Status.ToString() + "\r\n"; }
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Что то с IP-адресами.", "Седьмая и восьмая строки файла настройки!");
+
+                throw;
+            }
         }
     }
 }

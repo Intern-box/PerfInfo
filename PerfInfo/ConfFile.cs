@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows.Forms;
 
 namespace ConfFileSpace
 {
@@ -38,15 +39,24 @@ namespace ConfFileSpace
 
         void ReadConfFile(string path, string[] config)
         {
-            Config = File.ReadAllLines(path);
-            MDLP = Config[0];
-            ESD = Config[1];
-            AdmTemp = Config[2];
-            TJ = Config[3];
-            SwapC = Config[4];
-            SwapD = Config[5];
-            FirstIP = Config[6];
-            SecondIP = Config[7];
+            try
+            {
+                Config = File.ReadAllLines(path);
+                MDLP = Config[0];
+                ESD = Config[1];
+                AdmTemp = Config[2];
+                TJ = Config[3];
+                SwapC = Config[4];
+                SwapD = Config[5];
+                FirstIP = Config[6];
+                SecondIP = Config[7];
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("В файле настроек должно быть не менее восьми строк.", "Проверьте файл настроек!");
+
+                throw;
+            }
         }
     }
 }

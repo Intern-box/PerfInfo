@@ -282,7 +282,7 @@
             this.MinimizeBox = false;
             this.Name = "ViewForm";
             this.ShowIcon = false;
-            this.Text = "PerfInfo 0.2";
+            this.Text = "PerfInfo 0.3";
             this.ResumeLayout(false);
             this.PerformLayout();
 
