@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfFile.cs" />
+    <Compile Include="CPUTemperature.cs" />
     <Compile Include="MVP\View.cs">
       <SubType>Form</SubType>
     </Compile>

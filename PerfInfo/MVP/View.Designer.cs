@@ -47,7 +47,6 @@
             this.MDLPSizeText = new System.Windows.Forms.TextBox();
             this.DirSizeText = new System.Windows.Forms.TextBox();
             this.PingText = new System.Windows.Forms.TextBox();
-            this.Update = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CPUTemperature
@@ -240,24 +239,12 @@
             this.PingText.Text = "Температура процессора работает только с правами Администратора!\r\nПосле нажатия н" +
     "а кнопку, ждите...";
             // 
-            // Update
-            // 
-            this.Update.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Update.Location = new System.Drawing.Point(364, 12);
-            this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(93, 23);
-            this.Update.TabIndex = 27;
-            this.Update.Text = "Обновить";
-            this.Update.UseVisualStyleBackColor = true;
-            this.Update.Click += new System.EventHandler(this.Update_Click);
-            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(800, 464);
-            this.Controls.Add(this.Update);
             this.Controls.Add(this.PingText);
             this.Controls.Add(this.DirSizeText);
             this.Controls.Add(this.MDLPSizeText);
@@ -305,7 +292,6 @@
         public System.Windows.Forms.TextBox RAMSizeText;
         public System.Windows.Forms.TextBox VideodriverText;
         public System.Windows.Forms.TextBox CPUTempText;
-        private System.Windows.Forms.Button Update;
         public System.Windows.Forms.TextBox SwapText;
         public System.Windows.Forms.TextBox PingText;
         public System.Windows.Forms.TextBox DirSizeText;
