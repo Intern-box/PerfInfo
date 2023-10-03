@@ -3,6 +3,7 @@ using ModelSpace;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
+using CPUTemperatureSpace;
 
 namespace PresenterSpace
 {
@@ -16,8 +17,6 @@ namespace PresenterSpace
 
         public void Load()
         {
-            viewForm.CPUTempText.Text = model.CPUT;
-
             viewForm.SwapText.Text = $"{model.SwapPath} {model.Swap.ToString()} МБ";
 
             viewForm.CPUModelText.Text = model.CPU;
@@ -64,6 +63,17 @@ namespace PresenterSpace
                 $"В {model.AdmTemp} файлов {countAdm}\r\n" +
 
                 $"В {model.TJ} файлов {countTJ}";
+
+            CPUTemperature cpuTemperature = new CPUTemperature();
+
+            viewForm.CPUTempText.Text = cpuTemperature.Load();
+
+            //while (true)
+            //{
+            //    System.Threading.Thread.Sleep(100000);
+
+            //    viewForm.CPUTempText.Text = cpuTemperature.Load();
+            //}
         }
 
         public void Ping()

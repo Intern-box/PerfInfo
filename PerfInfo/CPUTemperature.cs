@@ -5,28 +5,18 @@ namespace CPUTemperatureSpace
 {
     public class CPUTemperature
     {
-        delegate string ChangeTemperature();
-
-        event ChangeTemperature ChangeTemperatureHandler;
+        string CurrentTemperature = string.Empty;
 
         public CPUTemperature() { Load(); }
 
-        void Load()
+        public string Load()
         {
-            string current = CheckTemperature();
+            CurrentTemperature = CheckTemperature();
 
-            while (true)
-            {
-                if (CheckTemperature() != current)
-                {
-                    ChangeTemperatureHandler = CheckChange;
+            if (CheckTemperature() != CurrentTemperature) { CurrentTemperature = CheckTemperature(); }
 
-                    current = CheckTemperature();
-                }
-            }
+            return CurrentTemperature;
         }
-
-        string CheckChange() { return CheckTemperature(); }
 
         string CheckTemperature()
         {

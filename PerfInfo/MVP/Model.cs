@@ -8,7 +8,6 @@ namespace ModelSpace
 {
     public class Model
     {
-        public string CPUT { get; }
         public string SwapPath { get; set; }
         public long Swap { get; }
         public string CPU { get; }
@@ -25,7 +24,6 @@ namespace ModelSpace
 
         public Model()
         {
-            CPUT = CPUTemperature();
             Swap = SwapSize();
             CPU = CPUModel();
             RAM = RAMModel();
@@ -36,28 +34,6 @@ namespace ModelSpace
             TJ = confFile.TJ;
             FirstIP = confFile.FirstIP;
             SecondIP = confFile.SecondIP;
-        }
-
-        public string CPUTemperature()
-        {
-            double CPUtprt;
-
-            string tmp = string.Empty;
-
-            try
-            {
-                ManagementObjectSearcher mos = new ManagementObjectSearcher(@"root\WMI", "Select * From MSAcpi_ThermalZoneTemperature");
-
-                foreach (ManagementObject mo in mos.Get())
-                {
-                    CPUtprt = Convert.ToDouble(Convert.ToDouble(mo.GetPropertyValue("CurrentTemperature").ToString()) - 2732) / 10;
-
-                    tmp += CPUtprt.ToString() + " °C";
-                }
-            }
-            catch (Exception) { }
-
-            return tmp;
         }
 
         public long SwapSize()

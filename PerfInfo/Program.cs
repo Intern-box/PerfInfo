@@ -17,8 +17,8 @@ namespace ProgramSpace
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Model model = new Model();
             ViewForm viewForm = new ViewForm();
+            Model model = new Model();
             Presenter presenter = new Presenter(viewForm, model);
             viewForm.presenter = presenter;
 
